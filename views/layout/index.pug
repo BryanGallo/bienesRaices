@@ -1,0 +1,15 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="theme-color" content="red")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="/css/app.css")
+        //- title= `Bienes Raices| ${pagina}` //cualquiera de las 2 formas es valida
+        title Bienes Raices | #{pagina}
+
+    body(class="min-h-screen bg-gray-300" )
+
+        main(class="mx-auto container ")
+            block contenido

@@ -1,0 +1,4 @@
+/* tiene 3 directivas necesarios para su importacion */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
