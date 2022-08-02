@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({path: '.env'});
 //
 //recibe 4 paramatros, nombreBDD-usuario-password-objetodeConfiguracion
 // ?? Usamos el operador Nullish que lee ese valor o en este caso vacio

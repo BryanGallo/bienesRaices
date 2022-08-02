@@ -9,7 +9,8 @@ import {
     olvideContrasenia,
     logger,
     registrar,
-    recuperar
+    recuperar,
+    confirmar
 } from "../controllers/usuarioController.js";
 //Routing
 //cuando alguien visite la diagonal va hacer lo siguiente, req: lo que envias al servidor , res:lo que responde el servidor
@@ -22,6 +23,8 @@ router.post("/login", logger);
 router.get("/registro", formularioRegistro);
 //cuando usamos formularios
 router.post("/registro", registrar);
+//usando routing dinamico con :
+router.get('/confirmar/:token',confirmar)
 
 router.get("/olvide-password", olvideContrasenia);
 router.post("/olvide-password", recuperar);

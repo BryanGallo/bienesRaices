@@ -1,5 +1,7 @@
 // const express = require('express')//Common JS forma anterior de importar paquetes
 import express from "express"; //forma actual EJS pero debemos en package.json colocar type module
+import csrf  from 'csurf'
+import cookieParser  from 'cookie-parser'
 import usuarioRoutes from "./routes/usuarioRoutes.js";
 import db from "./config/db.js";
 
@@ -9,10 +11,18 @@ const app = express();
 //Habilitar lectura de datos de formularios
 app.use(express.urlencoded({ extended: true }));
 
+//habilitar cookie parser
+app.use(cookieParser())
+
+//habilitar CSRF
+app.use(csrf({cookie:true}))
+
 //Conexion BDD
 try {
     await db.authenticate(); //metodo de sequelize para auntenticar
     db.sync()//generar la tabla si no existe
+    //cambios en la tabla modificar
+    // db.sync({ alter: true })
     console.log("conecxion correcta a la base de datos");
 } catch (error) {
     console.log(error);
@@ -31,7 +41,7 @@ app.set("views", "./views"); //le indicamos que carpeta es la de views o vistas
 app.use(express.static("./public"));
 
 //Definir un puerto para arranca r el proyecto
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`El servidor esta funcionando en el puerto ${port}`);
